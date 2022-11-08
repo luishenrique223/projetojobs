@@ -33,9 +33,9 @@ class _CadastroPageState extends State<CadastroPage> {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController search = TextEditingController();
-    final TextEditingController details = TextEditingController();
-    final TextEditingController phone = TextEditingController();
+    final TextEditingController searchController = TextEditingController();
+    final TextEditingController detailsController = TextEditingController();
+    final TextEditingController phoneController = TextEditingController();
     return Form(
       key: _formKey,
       child: Column(
@@ -50,7 +50,7 @@ class _CadastroPageState extends State<CadastroPage> {
                     }
                     return null;
                   },
-                  controller: search,
+                  controller: searchController,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -76,7 +76,7 @@ class _CadastroPageState extends State<CadastroPage> {
                     }
                     return null;
                   },
-                  controller: details,
+                  controller: detailsController,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -102,7 +102,7 @@ class _CadastroPageState extends State<CadastroPage> {
                     }
                     return null;
                   },
-                  controller: phone,
+                  controller: phoneController,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -125,9 +125,9 @@ class _CadastroPageState extends State<CadastroPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Job().jobsList.add(Job(
-                      search: search.text,
-                      details: details.text,
-                      phone: phone.text));
+                      search: searchController.text,
+                      details: detailsController.text,
+                      phone: phoneController.text));
 
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const JobListViewPage(),
