@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/model/apimodel.dart';
 
-class form extends StatelessWidget {
+class FormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(179, 202, 199, 199),
           title: const Text(
@@ -14,27 +13,26 @@ class form extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: const MyStatefulWidget(),
-      ),
+        body: const CadastroPage(),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+class CadastroPage extends StatefulWidget {
+  const CadastroPage({super.key});
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<CadastroPage> createState() => _CadastroPageState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _CadastroPageState extends State<CadastroPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController info1 = TextEditingController();
-    final TextEditingController info2 = TextEditingController();
-    final TextEditingController info3 = TextEditingController();
+    final TextEditingController search = TextEditingController();
+    final TextEditingController details = TextEditingController();
+    final TextEditingController phone = TextEditingController();
     return Form(
       key: _formKey,
       child: Column(
@@ -49,7 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     }
                     return null;
                   },
-                  controller: info1,
+                  controller: search,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -75,7 +73,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     }
                     return null;
                   },
-                  controller: info2,
+                  controller: details,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -101,7 +99,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     }
                     return null;
                   },
-                  controller: info3,
+                  controller: phone,
                   cursorColor: Colors.black,
                   maxLines: 2,
                   decoration: const InputDecoration(
@@ -124,9 +122,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               child: ElevatedButton(
                 onPressed: () {
                   Job().jobsList.add(Job(
-                      search: info1.text,
-                      details: info2.text,
-                      phone: info3.text));
+                      search: search.text,
+                      details: details.text,
+                      phone: phone.text));
                   setState(() {});
                 },
                 child: const Text('Enviar'),

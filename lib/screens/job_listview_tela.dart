@@ -3,8 +3,8 @@ import 'package:projeto/model/apimodel.dart';
 import 'package:projeto/screens/cadastro_tela.dart';
 import 'job_detail_tela.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class JobListViewPage extends StatelessWidget {
+  const JobListViewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_rounded),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => JobDetail(jobs)));
+                      MaterialPageRoute(builder: (context) => JobDetailPage(jobsList[index])));
                 },
               ),
             );
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => form()));
+              context, MaterialPageRoute(builder: (context) => Form()));
         },
         label: const Text('CADASTRO'),
         backgroundColor: Colors.lightBlue,

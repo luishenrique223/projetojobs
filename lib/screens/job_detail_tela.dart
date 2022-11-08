@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../model/apimodel.dart';
 
-class JobDetail extends StatelessWidget {
+class JobDetailpage extends StatelessWidget {
   final Job jobs;
 
-  const JobDetail(this.jobs, {super.key});
+  const JobDetailPage(this.jobs, {super.key});
 
   @override
   Widget build(BuildContext context) {
