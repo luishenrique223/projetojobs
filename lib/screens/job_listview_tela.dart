@@ -3,11 +3,12 @@ import 'package:projeto/model/apimodel.dart';
 import 'package:projeto/screens/cadastro_tela.dart';
 import 'job_detail_tela.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class JobListViewPage extends StatelessWidget {
+  const JobListViewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Job job = Job();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(179, 202, 199, 199),
@@ -18,28 +19,33 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView.builder(
-          itemCount: Job().jobsList.length,
+          itemCount: job.jobsList.length,
           itemBuilder: (context, index) {
-            Job jobs = Job().jobsList[index];
             return Card(
               margin: const EdgeInsets.all(10),
               child: ListTile(
                 tileColor: const Color.fromARGB(179, 202, 199, 199),
                 textColor: Colors.black,
-                title: Text(jobs.search ?? "ERRO"),
-                subtitle: Text(jobs.phone ?? "ERRO"),
+                title: Text(job.search ?? "ERRO"),
+                subtitle: Text(job.phone ?? "ERRO"),
                 trailing: const Icon(Icons.arrow_forward_rounded),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => JobDetail(jobs)));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => JobDetailpage(
+                        jobs: job.jobsList[index],
+                      ),
+                    ),
+                  );
                 },
               ),
             );
           }),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => form()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const FormPage()));
         },
         label: const Text('CADASTRO'),
         backgroundColor: Colors.lightBlue,
